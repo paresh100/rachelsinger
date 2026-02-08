@@ -2,17 +2,18 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, X, Search } from "lucide-react";
-import Logo from "../ui/Logo";
 import SearchOverlay from "../ui/SearchOverlay";
+import Logo from "../ui/Logo";
 
 const links = [
     { name: "Home", href: "/" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "About", href: "/about" },
-    { name: "Testimonials", href: "/testimonials" },
+    { name: "Testimonials", href: "/#testimonials" },
     { name: "Voice Coaching", href: "https://www.rachelpreecevoicecoach.com/", external: true },
     { name: "Contact", href: "/contact" },
 ];
@@ -21,6 +22,7 @@ export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -44,51 +46,60 @@ export default function Navbar() {
                 className={cn(
                     "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
                     isScrolled
-                        ? "bg-white/80 backdrop-blur-md py-4 shadow-sm border-b border-stone-100"
-                        : "bg-transparent py-8 border-b border-transparent"
+                        ? "bg-background-light/90 backdrop-blur-md py-4 shadow-sm border-b border-gold/10"
+                        : "bg-transparent py-6 border-b border-transparent"
                 )}
             >
                 <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
 
-                    {/* Logo */}
+                    {/* Logo - Google Stitch Stacked Style */}
                     <div className="relative z-50">
-                        <Link href="/" className="hover:opacity-80 transition-opacity" onClick={() => setIsMobileMenuOpen(false)}>
-                            <Logo />
+                        <Link href="/" className="group block" onClick={() => setIsMobileMenuOpen(false)}>
+                            <Logo className="text-2xl text-charcoal dark:text-white" />
                         </Link>
                     </div>
 
-                    {/* Desktop Menu */}
-                    <div className="hidden md:flex items-center gap-10">
-                        {links.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                target={link.external ? "_blank" : undefined}
-                                rel={link.external ? "noopener noreferrer" : undefined}
-                                className="group relative text-sm font-medium text-charcoal/80 hover:text-charcoal transition-colors font-sans uppercase tracking-widest py-2"
-                            >
-                                {link.name}
-                                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                            </Link>
-                        ))}
+                    {/* Desktop Menu - Kept for UX, styled specifically */}
+                    <div className="hidden md:flex items-center gap-12">
+                        {links.map((link) => {
+                            const isActive = pathname === link.href;
+                            return (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    target={link.external ? "_blank" : undefined}
+                                    rel={link.external ? "noopener noreferrer" : undefined}
+                                    className={cn(
+                                        "group relative text-xs font-medium transition-colors font-sans uppercase tracking-[0.15em] py-2",
+                                        isActive ? "text-gold" : "text-charcoal/70 dark:text-white/70 hover:text-gold"
+                                    )}
+                                >
+                                    {link.name}
+                                    <span className={cn(
+                                        "absolute bottom-0 left-0 w-full h-[1px] bg-gold transition-transform duration-300 origin-left ease-out",
+                                        isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                                    )} />
+                                </Link>
+                            );
+                        })}
                     </div>
 
                     {/* Action Icons */}
                     <div className="flex items-center gap-6 relative z-50">
                         <button
                             onClick={() => setIsSearchOpen(true)}
-                            className="text-charcoal/80 hover:text-gold transition-colors focus:outline-none"
+                            className="text-charcoal/70 dark:text-white/70 hover:text-gold transition-colors focus:outline-none"
                             aria-label="Search"
                         >
-                            <Search size={22} strokeWidth={1.5} />
+                            <Search size={20} strokeWidth={1.5} />
                         </button>
 
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="md:hidden text-charcoal hover:text-gold transition-colors focus:outline-none"
+                            className="md:hidden text-charcoal/70 dark:text-white/70 hover:text-gold transition-colors focus:outline-none"
                             aria-label="Toggle Menu"
                         >
-                            {isMobileMenuOpen ? <X size={26} strokeWidth={1.5} /> : <Menu size={26} strokeWidth={1.5} />}
+                            {isMobileMenuOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
                         </button>
                     </div>
                 </div>

@@ -1,31 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  /* Rachel Preece Brand Palette */
-  --color-sandshell: #F9E4E7;
-  /* Blush Pink */
-  --color-rose-momm: #D8A2AD;
-  /* Muted Rose */
-  --color-cream: #FFF8F5;
-  /* Cream background */
-  --color-charcoal: #333333;
-  /* Main Text */
-  --color-stone: #E5E5E5;
-  /* Light grey for borders */
-  --color-gold: #C6A67A;
-  /* Soft Gold */
+  /* Rachel Preece Brand Palette - Google Stitch Update */
+  --color-primary: #D4AF37;
+  /* Elegant Gold */
+  --color-charcoal: #2D2D2D;
+  /* Deep Charcoal */
+  --color-background-light: #FDFBF7;
+  /* Soft Warm White */
+  --color-background-dark: #121212;
+  /* Deep Dark */
 
-  /* Semantic Mappings */
-  --color-background: var(--color-cream);
+  /* Legacy/Semantic Mappings for backward compat */
+  --color-background: var(--color-background-light);
   --color-foreground: var(--color-charcoal);
-  --color-primary: var(--color-charcoal);
-  --color-primary-foreground: #ffffff;
-  --color-accent: var(--color-gold);
-  --color-accent-foreground: #ffffff;
+  --color-rose-momm: #D8A2AD;
+  /* Keep for accent if needed */
+  --color-cream: #FFF8F5;
 
   /* Typography */
   --font-display: var(--font-playfair);
   --font-sans: var(--font-inter);
+  --font-dm-sans: var(--font-dm-sans);
 
   /* Animations */
   --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
@@ -76,26 +72,42 @@
   .bg-soft {
     background: linear-gradient(180deg, var(--color-cream) 0%, #FFFFFF 100%);
   }
-}
 
-/* Base Styles */
-@layer base {
-  body {
-    background-color: var(--color-cream);
-    color: var(--color-charcoal);
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  /* Parallax Blob */
+  .parallax-blob {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0.02) 100%);
+    filter: blur(60px);
+    z-index: -1;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    color: var(--color-charcoal);
+  /* Hero Gradients */
+  .hero-gradient {
+    background: linear-gradient(to bottom, rgba(250, 250, 250, 0) 0%, #FAFAFA 100%);
+  }
+
+  .dark .hero-gradient {
+    background: linear-gradient(to bottom, rgba(18, 18, 18, 0) 0%, #121212 100%);
+  }
+
+  /* Base Styles */
+  @layer base {
+    body {
+      background-color: var(--color-cream);
+      color: var(--color-charcoal);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--color-charcoal);
+    }
   }
 }
