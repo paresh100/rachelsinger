@@ -96,7 +96,7 @@ export default function Hero() {
                 </div>
 
                 {/* Visual */}
-                <div className="hidden lg:flex flex-col w-full h-full justify-center">
+                <div className="flex flex-col w-full h-full justify-center mt-12 lg:mt-0">
                     <div className="relative h-[600px] lg:h-[750px] w-full">
                         <div ref={imageRef} className="absolute inset-0 rounded-[40px] overflow-hidden shadow-2xl shadow-rose-momm/20 ring-1 ring-black/5">
                             <GlowingEffect
