@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  /* Rachel Preece Brand Palette */
+  --color-sandshell: #F9E4E7;
+  /* Blush Pink */
+  --color-rose-momm: #D8A2AD;
+  /* Muted Rose */
+  --color-cream: #FFF8F5;
+  /* Cream background */
+  --color-charcoal: #333333;
+  /* Main Text */
+  --color-stone: #E5E5E5;
+  /* Light grey for borders */
+  --color-gold: #C6A67A;
+  /* Soft Gold */
+
+  /* Semantic Mappings */
+  --color-background: var(--color-cream);
+  --color-foreground: var(--color-charcoal);
+  --color-primary: var(--color-charcoal);
+  --color-primary-foreground: #ffffff;
+  --color-accent: var(--color-gold);
+  --color-accent-foreground: #ffffff;
+
+  /* Typography */
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-inter);
+
+  /* Animations */
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+
+  @keyframes spin-around {
+    0% {
+      transform: translateZ(0) rotate(0);
+    }
+
+    15%,
+    35% {
+      transform: translateZ(0) rotate(90deg);
+    }
+
+    65%,
+    85% {
+      transform: translateZ(0) rotate(270deg);
+    }
+
+    100% {
+      transform: translateZ(0) rotate(360deg);
+    }
+  }
+
+  @keyframes shimmer-slide {
+    to {
+      transform: translate(calc(100cqw - 100%), 0);
+    }
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Elegant Card Style */
+  .brand-card {
+    background: #ffffff;
+    border: 1px solid rgba(198, 166, 122, 0.2);
+    /* Gold trace */
+    box-shadow: 0 4px 20px -2px rgba(51, 51, 51, 0.05);
+  }
+
+  /* Soft Section Background */
+  .bg-soft {
+    background: linear-gradient(180deg, var(--color-cream) 0%, #FFFFFF 100%);
+  }
+}
+
+/* Base Styles */
+@layer base {
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-charcoal);
+  }
+}

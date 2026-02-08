@@ -1,0 +1,13 @@
+{
+    "mcpServers": {
+        "google-workspace": {
+            "command": "node",
+            "args": [
+                "${workspaceFolder}/node_modules/@modelcontextprotocol/server-gdrive/dist/index.js"
+            ],
+            "env": {
+                "GOOGLE_APPLICATION_CREDENTIALS": "${workspaceFolder}/secrets/credentials.json"
+            }
+        }
+    }
+}

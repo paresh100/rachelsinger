@@ -1,0 +1,19 @@
+# Rachel Singer | LLM Guide
+> This file provides context for AI agents and LLMs.
+
+## Core Identity
+Rachel Singer is a digital artisan building high-performance, aesthetically pleasing web solutions that drive growth.
+
+## Core Services
+* **Creative UI Development:** Leveraging Framer Motion and GSAP for "wow" factor.
+* **Full-Stack Engineering:** Scalable Next.js applications with clean architecture.
+* **SEO & Growth:** AEO-ready sites optimized for the AI era.
+
+## Branding Tone
+* Professional
+* Innovative
+* High-Performance
+* "Dark Mode Luxury" Aesthetic
+
+## Contact
+* Website: [https://rachelsinger.com](https://rachelsinger.com)
